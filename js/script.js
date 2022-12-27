@@ -1,17 +1,102 @@
 function displayMeaning(word, meaning) {
     document.getElementsByClassName("main")[0].style.height = "100px"
     let partsOfSpeech = meaning["partOfSpeech"]
-    let size = meaning["definitions"][0]["definition"].length
-    console.log(meaning)
 
-    document.getElementsByClassName("main")[0].style.height = `${50 + size*2 + (100 - size)}px`
-    document.getElementsByClassName("meaning-wrapper")[0].innerHTML = `
-    <div class="meaning">
-        <p class="title">${word}</p>
-        <p class="subtitle">${partsOfSpeech}</p>
-        <p class="definition">${meaning["definitions"][0]["definition"]}</p>
-    </div>
-    ` 
+    if (meaning.definitions.length === 1) {
+        if ("example" in meaning["definitions"][0]) {
+            let size = meaning["definitions"][0]["definition"].length + meaning["definitions"][0]["example"].length
+            document.getElementsByClassName("main")[0].style.height = `${50 + size*2 + (100 - size)}px`
+            document.getElementsByClassName("meaning-wrapper")[0].innerHTML = `
+            <div class="meaning">
+                <p class="title">${word}</p>
+                <p class="subtitle">${partsOfSpeech}</p>
+                <p class="definition">${meaning["definitions"][0]["definition"]}</p>
+                <p class="example">example: ${meaning["definitions"][0]["example"]}</p>
+            </div>
+            `
+        }
+        else {
+            let size = meaning["definitions"][0]["definition"].length
+            document.getElementsByClassName("main")[0].style.height = `${50 + size*2 + (100 - size)}px`
+            document.getElementsByClassName("meaning-wrapper")[0].innerHTML = `
+            <div class="meaning">
+                <p class="title">${word}</p>
+                <p class="subtitle">${partsOfSpeech}</p>
+                <p class="definition">${meaning["definitions"][0]["definition"]}</p>
+            </div>
+            `
+        }
+    }
+    else {
+        if ("example" in meaning["definitions"][0] && "example" in meaning["definitions"][1]) {
+            let size = meaning["definitions"][0]["definition"].length + meaning["definitions"][0]["example"].length + meaning["definitions"][1]["definition"].length + meaning["definitions"][1]["example"].length
+            document.getElementsByClassName("main")[0].style.height = `${120 + size*1.8 + (100 - size)}px`
+            document.getElementsByClassName("meaning-wrapper")[0].innerHTML = `
+            <div class="meaning">
+                <p class="title">${word}</p>
+                <p class="subtitle">${partsOfSpeech}</p>
+                <p class="definition">${meaning["definitions"][0]["definition"]}</p>
+                <p class="example">example: ${meaning["definitions"][0]["example"]}</p>
+            </div>
+            <div class="meaning">
+                <p class="title">${word}</p>
+                <p class="subtitle">${partsOfSpeech}</p>
+                <p class="definition">${meaning["definitions"][1]["definition"]}</p>
+                <p class="example">example: ${meaning["definitions"][1]["example"]}</p>
+            </div>
+            ` 
+        }
+        else if ("example" in meaning["definitions"][0]) {
+            let size = meaning["definitions"][0]["definition"].length + meaning["definitions"][0]["example"].length + meaning["definitions"][1]["definition"].length
+            document.getElementsByClassName("main")[0].style.height = `${120 + size*1.8 + (100 - size)}px`
+            document.getElementsByClassName("meaning-wrapper")[0].innerHTML = `
+            <div class="meaning">
+                <p class="title">${word}</p>
+                <p class="subtitle">${partsOfSpeech}</p>
+                <p class="definition">${meaning["definitions"][0]["definition"]}</p>
+                <p class="example">example: ${meaning["definitions"][0]["example"]}</p>
+            </div>
+            <div class="meaning">
+                <p class="title">${word}</p>
+                <p class="subtitle">${partsOfSpeech}</p>
+                <p class="definition">${meaning["definitions"][1]["definition"]}</p>
+            </div>
+            ` 
+        }
+        else if ("example" in meaning["definitions"][1]) {
+            let size = meaning["definitions"][0]["definition"].length + meaning["definitions"][1]["definition"].length + meaning["definitions"][1]["example"].length
+            document.getElementsByClassName("main")[0].style.height = `${120 + size*1.8 + (100 - size)}px`
+            document.getElementsByClassName("meaning-wrapper")[0].innerHTML = `
+            <div class="meaning">
+                <p class="title">${word}</p>
+                <p class="subtitle">${partsOfSpeech}</p>
+                <p class="definition">${meaning["definitions"][0]["definition"]}</p>
+            </div>
+            <div class="meaning">
+                <p class="title">${word}</p>
+                <p class="subtitle">${partsOfSpeech}</p>
+                <p class="definition">${meaning["definitions"][1]["definition"]}</p>
+                <p class="example">example: ${meaning["definitions"][1]["example"]}</p>
+            </div>
+            ` 
+        }
+        else {
+            let size = meaning["definitions"][0]["definition"].length + meaning["definitions"][1]["definition"].length
+            document.getElementsByClassName("main")[0].style.height = `${120 + size*1.8 + (100 - size)}px`
+            document.getElementsByClassName("meaning-wrapper")[0].innerHTML = `
+            <div class="meaning">
+                <p class="title">${word}</p>
+                <p class="subtitle">${partsOfSpeech}</p>
+                <p class="definition">${meaning["definitions"][0]["definition"]}</p>
+            </div>
+            <div class="meaning">
+                <p class="title">${word}</p>
+                <p class="subtitle">${partsOfSpeech}</p>
+                <p class="definition">${meaning["definitions"][1]["definition"]}</p>
+            </div>
+            ` 
+        }
+    }
 }
 
 

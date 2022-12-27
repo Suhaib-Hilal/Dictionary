@@ -56,6 +56,12 @@ body {
     border-radius: 5px;
 }
 
+.meaning-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .meaning {
     border-left: 5px solid #F4ABC4;
     border-radius: 5px;
@@ -91,6 +97,14 @@ body {
     padding: 5px;
 }
 
+.example {
+    color: grey;
+    margin-left: 5px;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 5px;
+}
+
 .error {
     color: grey;
     width: 350px;
@@ -107,8 +121,6 @@ body {
     align-items: center;
     justify-content: center;
 }
-
-/* loading */
 
 @keyframes fade-in {
     from {opacity: 0;}

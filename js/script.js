@@ -30,7 +30,7 @@ function displayMeaning(word, meaning) {
     else {
         if ("example" in meaning["definitions"][0] && "example" in meaning["definitions"][1]) {
             let size = meaning["definitions"][0]["definition"].length + meaning["definitions"][0]["example"].length + meaning["definitions"][1]["definition"].length + meaning["definitions"][1]["example"].length
-            document.getElementsByClassName("main")[0].style.height = `${120 + size*1.8 + (100 - size)}px`
+            document.getElementsByClassName("main")[0].style.height = `${150 + size*2 + (100 - size)}px`
             document.getElementsByClassName("meaning-wrapper")[0].innerHTML = `
             <div class="meaning">
                 <p class="title">${word}</p>
@@ -48,7 +48,7 @@ function displayMeaning(word, meaning) {
         }
         else if ("example" in meaning["definitions"][0]) {
             let size = meaning["definitions"][0]["definition"].length + meaning["definitions"][0]["example"].length + meaning["definitions"][1]["definition"].length
-            document.getElementsByClassName("main")[0].style.height = `${120 + size*1.8 + (100 - size)}px`
+            document.getElementsByClassName("main")[0].style.height = `${150 + size*2 + (100 - size)}px`
             document.getElementsByClassName("meaning-wrapper")[0].innerHTML = `
             <div class="meaning">
                 <p class="title">${word}</p>
@@ -82,7 +82,7 @@ function displayMeaning(word, meaning) {
         }
         else {
             let size = meaning["definitions"][0]["definition"].length + meaning["definitions"][1]["definition"].length
-            document.getElementsByClassName("main")[0].style.height = `${120 + size*1.8 + (100 - size)}px`
+            document.getElementsByClassName("main")[0].style.height = `${150 + size*1.8 + (100 - size)}px`
             document.getElementsByClassName("meaning-wrapper")[0].innerHTML = `
             <div class="meaning">
                 <p class="title">${word}</p>
